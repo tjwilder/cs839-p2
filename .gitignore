@@ -1,0 +1,21 @@
+
+## Solution/project files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+.vs
+
+## Build Directories
+x64
+Release
+Debug
+
+## cmake files
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles
+
+## Other files
+*.swp
+
