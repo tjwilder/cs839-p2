@@ -1,2 +1,2 @@
-add_subdirectory(squishCube)
+add_subdirectory(squishCubeSim)
 

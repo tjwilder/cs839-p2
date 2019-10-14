@@ -3,17 +3,19 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows") # we'll assume 'Windows' means MSVC f
         link_directories(${USD_LIB_DIR})
 endif()
 
-add_executable (squishCube
+add_executable (squishCubeSim
         main.cpp
         )
 
 find_package(PythonLibs)
 
-target_include_directories(squishCube
+target_include_directories(squishCubeSim
         PUBLIC
+            ${EIGEN_DIR}
             ${USD_INC_DIR}
             ${PYTHON_INCLUDE_PATH}
             ${USD_BOOST_INC_DIR}
+						${USD_BOOST_INC_DIR}/lib64-msvc-14.1
         )
 
  set (LINK_LIBS 
@@ -32,4 +34,4 @@ if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 endif()
        
 
-target_link_libraries(squishCube ${LINK_LIBS})
+target_link_libraries(squishCubeSim ${LINK_LIBS})

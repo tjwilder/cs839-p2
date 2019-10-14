@@ -9,7 +9,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows") # we'll assume 'Windows' means MSVC f
     # windows.h defines max as a macro, which interferes with std::limits<>::max()
     add_compile_definitions(NOMINMAX)
     # disable warnings about some casting inconsistencies
-    set (CMAKE_CXX_FLAGS "/wd\"4244\" /wd\"4305\" /wd\"4267\" ${CMAKE_CXX_FLAGS}")
+		set (CMAKE_CXX_FLAGS "/wd\"4244\" /wd\"4305\" /wd\"4267\" /machine:X64 ${CMAKE_CXX_FLAGS}")
+		set (CMAKE_GENERATOR_PLATFORM "host=x64")
+		set (CMAKE_GENERATOR_TOOLSET "x64")
     # lib suffix is different on windows than ubuntu
     # surely cmake can take care of this automatically, but I don't know how.
     set (LIB_SUFFIX ".lib")
@@ -20,9 +22,10 @@ endif()
 
 add_definitions(-DBUILD_COMPONENT_SRC_PREFIX="" -DBUILD_OPTLEVEL_DEV)
 
+set(EIGEN_DIR "C:/Users/Khalory/Desktop/Code/Libraries/c++/eigen-eigen-323c052e1731")
 set(USD_ROOT_DIR "K:/Program Files/USD")
-set(USD_LIB_DIR ${USD_ROOT_DIR}/lib/)
-set(USD_INC_DIR ${USD_ROOT_DIR}/include/)
+set(USD_LIB_DIR ${USD_ROOT_DIR}/lib)
+set(USD_INC_DIR ${USD_ROOT_DIR}/include)
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows") # we'll assume 'Windows' means MSVC for simplicity
     set(USD_BOOST_INC_DIR ${USD_INC_DIR}/boost-1_65_1)
 endif()
